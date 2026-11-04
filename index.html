@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clepsydra</title>
+    <script>
+      // 预挂载：按已存主题切换 dark 类并设置画布底色（防闪烁）。
+      // 注意：不要用无层级的 <style> 固定背景色，会覆盖 Tailwind 的主题变量。
+      try {
+        var light = localStorage.getItem("clepsydra:theme") === "light";
+        if (light) document.documentElement.classList.remove("dark");
+        document.documentElement.style.background = light ? "#ffffff" : "#121317";
+      } catch (e) {}
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

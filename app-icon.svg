@@ -1,0 +1,47 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 背景：蓝→青渐变，呼应"水" -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="55%" stop-color="#0891B2"/>
+      <stop offset="100%" stop-color="#22D3EE"/>
+    </linearGradient>
+    <!-- 左上高光，增加体积感 -->
+    <radialGradient id="glow" cx="28%" cy="20%" r="75%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.26"/>
+      <stop offset="55%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <!-- 水 -->
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EAFBFF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#7FD4F7" stop-opacity="0.92"/>
+    </linearGradient>
+    <!-- 水漏玻璃内腔（含上下横杠区域），用于裁切水层 -->
+    <clipPath id="glass">
+      <path d="M 332 282 C 332 430 452 452 512 512 C 452 572 332 594 332 742 L 692 742 C 692 594 572 572 512 512 C 572 452 692 430 692 282 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="230" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1024" height="1024" rx="230" fill="url(#glow)"/>
+
+  <!-- 水：上腔水位 + 下腔积水（裁切在玻璃内） -->
+  <g clip-path="url(#glass)">
+    <rect x="260" y="300" width="504" height="136" fill="url(#water)"/>
+    <rect x="260" y="656" width="504" height="62" fill="url(#water)"/>
+    <!-- 水中气泡 -->
+    <circle cx="430" cy="336" r="10" fill="#FFFFFF" opacity="0.55"/>
+    <circle cx="462" cy="368" r="6" fill="#FFFFFF" opacity="0.45"/>
+  </g>
+
+  <!-- 正在滴落的水珠 -->
+  <path d="M 512 546 C 522 563 538 574 538 596 A 26 26 0 1 1 486 596 C 486 574 502 563 512 546 Z" fill="#FFFFFF"/>
+
+  <!-- 玻璃轮廓：上下横杠 + 两侧弧线 -->
+  <g stroke="#FFFFFF" stroke-width="54" fill="none" stroke-linecap="round">
+    <path d="M 332 282 H 692"/>
+    <path d="M 332 742 H 692"/>
+    <path d="M 332 282 C 332 430 452 452 512 512 C 452 572 332 594 332 742"/>
+    <path d="M 692 282 C 692 430 572 452 512 512 C 572 572 692 594 692 742"/>
+  </g>
+</svg>
